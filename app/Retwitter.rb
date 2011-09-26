@@ -26,7 +26,12 @@ class Retwitter
 
 		if tweets.length > 0
 			twitter = get_twitter_client
-			tweets.each { |id| twitter.retweet id }
+			tweets.each do |id| 
+				begin
+					twitter.retweet id
+				rescue Twitter::Forbidden
+				end
+			end
 			last_verified.truncate 0
 			last_verified.write tweets[0]
 		end

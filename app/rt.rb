@@ -13,4 +13,4 @@ require 'yaml'
 
 account_data = YAML::load_file 'account.yaml'
 retwitter = Retwitter.new account_data
-retwitter.retweet ['"php\'n rio"','phprio','phpnrio']
+retwitter.retweet ['"php\'n rio"','phprio','phpnrio','phpnrio11']

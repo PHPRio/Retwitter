@@ -20,13 +20,13 @@ class Retwitter
 		last_id = last_verified.read.gsub("\000", '')
 		last_id = 0 if last_id.empty?
 		search_terms = search_for.join ' OR '
-		tweets = Twitter::Search.new.containing(search_terms).since_id(last_id).not_from(@account[:name]).fetch.collect do |t|
+		tweets = Twitter::Search.new.containing(search_terms).since_id(last_id).not_from(@account[:name]).not_from('StrikeRH1').fetch.collect do |t|
 			t.id unless t.text[0,1] == '@'
 		end.compact
 
 		if tweets.length > 0
 			twitter = get_twitter_client
-			tweets.each do |id| 
+			tweets.each do |id|
 				begin
 					twitter.retweet id
 				rescue Twitter::Forbidden

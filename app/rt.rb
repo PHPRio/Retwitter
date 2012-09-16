@@ -8,7 +8,7 @@
 #	puts "Entering debug mode (a.k.a. won't tweet for real). If you want to tweet, use -t flag and be happy."
 #end
 
-require 'Retwitter'
+require './Retwitter'
 require 'yaml'
 
 account_data = YAML::load_file 'account.yaml'
